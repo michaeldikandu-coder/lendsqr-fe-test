@@ -6,15 +6,30 @@ import { useRouter } from 'next/navigation'
 import { IoIosNotificationsOutline, IoIosSearch } from 'react-icons/io'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { storageUtils } from '@/utils/storage'
+import { useSearch } from '@/contexts/SearchContext'
 import './navbar.scss'
 
 export default function Navbar() {
   const [showDropdown, setShowDropdown] = useState(false)
+  const [localSearchQuery, setLocalSearchQuery] = useState('')
+  const { setSearchQuery } = useSearch()
   const router = useRouter()
 
   const handleLogout = () => {
     storageUtils.removeAuthToken()
     router.push('/login')
+  }
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSearchQuery(localSearchQuery)
+  }
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setLocalSearchQuery(value)
+    // Real-time search as user types
+    setSearchQuery(value)
   }
 
   return (
@@ -30,16 +45,18 @@ export default function Navbar() {
       </div>
       
       <div className="navbar-center">
-        <div className="search-container">
+        <form onSubmit={handleSearch} className="search-container">
           <input 
             type="text" 
             placeholder="Search for anything"
             className="search-input"
+            value={localSearchQuery}
+            onChange={handleSearchInputChange}
           />
-          <button className="search-button">
+          <button type="submit" className="search-button">
             <IoIosSearch />
           </button>
-        </div>
+        </form>
       </div>
       
       <div className="navbar-right">
