@@ -24,7 +24,7 @@ const generateMockUsers = (count: number): User[] => {
         phoneNumber: `+234${Math.floor(Math.random() * 9000000000) + 1000000000}`,
         avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${firstName}${lastName}`,
         gender: Math.random() > 0.5 ? 'Male' : 'Female',
-        bvn: Math.floor(Math.random() * 90000000000) + 10000000000,
+        bvn: (Math.floor(Math.random() * 90000000000) + 10000000000).toString(),
         address: `${Math.floor(Math.random() * 999) + 1} Random Street, Lagos, Nigeria`,
         currency: 'NGN'
       },
@@ -36,7 +36,7 @@ const generateMockUsers = (count: number): User[] => {
         address: `${Math.floor(Math.random() * 999) + 1} Guarantor Street, Abuja, Nigeria`
       },
       accountBalance: (Math.random() * 1000000).toFixed(2),
-      accountNumber: Math.floor(Math.random() * 9000000000) + 1000000000,
+      accountNumber: (Math.floor(Math.random() * 9000000000) + 1000000000).toString(),
       socials: {
         facebook: `facebook.com/${firstName.toLowerCase()}${lastName.toLowerCase()}`,
         instagram: `@${firstName.toLowerCase()}${lastName.toLowerCase()}`,
