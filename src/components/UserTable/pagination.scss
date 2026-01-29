@@ -1,0 +1,95 @@
+@import '../../app/globals.scss';
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 30px;
+  background: #FFFFFF;
+  
+  @include mobile {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #545F7D;
+  
+  .items-per-page {
+    background: rgba(33, 63, 125, 0.1);
+    border: 1px solid #04326014;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #213F7D;
+    cursor: pointer;
+    
+    &:focus {
+      outline: none;
+      border-color: #39CDCC;
+    }
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-btn {
+  min-width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #545F7D;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  
+  &:hover:not(:disabled):not(.ellipsis) {
+    background: rgba(57, 205, 204, 0.1);
+    color: #39CDCC;
+  }
+  
+  &.active {
+    background: #213F7D;
+    color: #FFFFFF;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  &.ellipsis {
+    cursor: default;
+    
+    &:hover {
+      background: transparent;
+      color: #545F7D;
+    }
+  }
+  
+  svg {
+    font-size: 14px;
+  }
+}
